@@ -1,0 +1,14 @@
+<template>
+    <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+  <label class="form-check-label" for="flexCheckChecked">
+   {{genre}}
+  </label>
+</div>
+</template>
+<script setup>
+
+defineProps({ 
+    genre :String
+})
+</script>
