@@ -1,4 +1,5 @@
 export default [
+  
   { "id": 1, "genre": "Фантастика" },
   { "id": 2, "genre": "Фэнтези" },
   { "id": 3, "genre": "Роман" },

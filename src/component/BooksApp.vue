@@ -1,9 +1,12 @@
 <template>
     <div class="col mt-2">
-            <div class="card" style="width: 12rem; height:17.5rem; position: relative;">
+            <div class="card" style="width: 12rem; position: relative;">
                 <img :src='book.img' class="card-img-top" :alt="book.name">
+                <div>
+
+    <h6 @click="allText=!allText" class="card-text namebook">{{book.name}}</h6>
+                </div>
                 <div class="card-body">
-    <h6 @click="allText=!allText" class="card-text namebook" :class="{'allText':allText}">{{book.name}}</h6>
     <p class="card-text "><strong>Aвтор: <br> </strong>{{book.author}}</p>
     <p class="card-text"><strong>ISBN: <br> </strong>{{book.ISBN}}</p>
     <p class="card-text"><strong>Жанр: <br> </strong>{{book.genre}}</p>
@@ -30,8 +33,8 @@ defineProps({
     color: white;
     position: absolute;
     background: rgba(0, 0, 0, 0.501);
-    bottom: -300px;
-    height:17.5rem;
+    bottom: -500px;
+    height:100%;
     transition: 0.5s ease-in;
     width: 100%;
     
@@ -49,5 +52,8 @@ defineProps({
 }
 .allText {
     white-space: normal !important;
+}
+.namebook{
+    padding: 10px 10px;
 }
 </style>
