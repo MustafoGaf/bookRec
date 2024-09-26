@@ -11,18 +11,28 @@
     <p class="card-text"><strong>ISBN: <br> </strong>{{book.ISBN}}</p>
     <p class="card-text"><strong>Жанр: <br> </strong>{{book.genre}}</p>
     <p class="card-text" style="font-size:18px"><strong>Рейтинг: </strong>{{book.rating}}</p>
+   <div >
+   <stars-component :selectedStars='currentStar'
+   v-on:updateSelectedStars='updateSelectedStars'
+    />
+   
 
+   </div>
                 </div>
             </div>
     </div>
 </template>
 <script setup>
+import StarsComponent from './StarsComponent.vue'
 import {ref} from 'vue'
 const allText = ref(false)
 defineProps({
     book:Object
 })
-
+const currentStar = ref(0)
+function updateSelectedStars(i){
+    currentStar.value= i+1
+}
 </script>
 
 <style scoped>
@@ -45,15 +55,15 @@ defineProps({
 .card:hover img{
     filter: blur(2px);
 }
-.namebook {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+
 .allText {
     white-space: normal !important;
 }
 .namebook{
+    text-align: center;
     padding: 10px 10px;
+}
+.card-text {
+    margin-bottom:0.5rem;
 }
 </style>

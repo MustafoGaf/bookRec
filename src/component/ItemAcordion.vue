@@ -1,6 +1,6 @@
 <template>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  @change="handleChange(janr)">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  @change="handleChange(genre)" :checked='currentGanr == genre'>
   <label class="form-check-label" for="flexRadioDefault1">
    {{genre}}
   </label>
@@ -10,11 +10,12 @@
 
 defineProps({ 
     genre :String, 
-    default: Boolean
+    default: Boolean, 
+    currentGanr:String
 })
-const emit = defineEmits(['updateJanr'])
+const emit = defineEmits(['updateGanr'])
 const handleChange = (janr) => {
-  emit('updateJanr', janr)
+  emit('updateGanr', janr)
   
 }
 </script>

@@ -9,12 +9,17 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <item-acordion v-for="janr of janrs" :key="janr.id" :genre='janr.genre' @updateJanr='(janr)=>alert(janr)' />
+        <item-acordion 
+        v-for="janr of janrs" 
+        :key="janr.id" 
+        :genre='janr.genre' 
+        :currentGanr='currentGanr'
+        v-on:updateGanr='(ganr)=>currentGanr=ganr' />
       </div>
   <div style="display:flex; gap:10px;justify-content: center;
     margin-bottom: 10px">
-    <button type="button" class="btn btn-primary">Преминить</button>
-    <button type="button" class="btn btn-danger">Сбросить</button>
+    <button type="button" class="btn btn-primary" @click="$emit('filter', currentGanr)">Преминить</button>
+    <button type="button" class="btn btn-danger" @click="handleReset">Сбросить</button>
   </div>
     </div>
   </div>
@@ -32,5 +37,10 @@
 import { ref } from 'vue'
 import janrs from '../data/janr'
 import ItemAcordion from './ItemAcordion.vue'
-const currentJanr = ref('')
+const currentGanr = ref('Фантастика')
+const emit = defineEmits(['filter'])
+function handleReset(){
+  currentGanr.value='';
+  emit('filter', '')
+}
 </script>

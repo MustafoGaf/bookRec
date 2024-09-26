@@ -1,7 +1,7 @@
 <template>
     <section class="row container-fluid" style="margin-top: 20px">
         <div class="col-md-3">
-            <filter-main @setGenre='setGenre' />
+            <filter-main v-on:filter='(ganr)=>genre=ganr' />
         </div>
   <div class="col-md-9">
     <div class="input-group mb-3">
@@ -32,7 +32,7 @@ genre.value = val
 }
 
 const filerBooks = computed(() => {
-  return books.filter((book) => book.name.includes(search.value)).filter(book => book.genre.includes(genre.value)
+  return books.filter((book) => book.name.toLowerCase().includes(search.value.toLowerCase())).filter(book => book.genre.includes(genre.value)
 
    )
 })
